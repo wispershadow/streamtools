@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.wispershadow.stream</groupId>
+    <artifactId>stream_parent</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>stream_sdk</module>
+        <module>stream_functions</module>
+        <module>stream_services_core</module>
+        <module>stream_common</module>
+        <module>stream_transformation</module>
+        <module>stream_operators</module>
+        <module>stream_testbase</module>
+    </modules>
+    <packaging>pom</packaging>
+
+
+</project>
