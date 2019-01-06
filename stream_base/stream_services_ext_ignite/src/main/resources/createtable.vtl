@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS $schema.name (
+  #set( $i = 1 )
+  #foreach( $col in $schema.columns)
+    $col.name  $sqltypemapper.mapType($col.type),
+  #end
+  PRIMARY KEY(#foreach( $keycol in $schema.keyColumnNames) #if ($i > 1), #end $keycol #set($i = $i + 1) #end)
+) WITH "template=$templatename ,cache_name=$cachename, key_type= $sqltable.keyType, value_type= $sqltable.valueType"

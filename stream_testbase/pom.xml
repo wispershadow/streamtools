@@ -10,6 +10,26 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>stream_testbase</artifactId>
-
-
+	<properties>
+		<junit.version>4.12</junit.version>
+		<powermock.version>2.0.0-RC.4</powermock.version>
+        <mockito.version>2.23.0</mockito.version>
+	</properties>
+	
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+        </dependency>
+        <!-- dependency>
+            <groupId>org.powermock</groupId>
+            <artifactId>powermock-api-mockito2</artifactId>
+        </dependency -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+        </dependency>
+    </dependencies>
 </project>

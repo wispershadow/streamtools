@@ -1,0 +1,3 @@
+ALTER TABLE $tableName 
+#set( $i = 1 )
+ADD COLUMN IF NOT EXISTS $col.name() $sqltypemapper.mapType($col.type().name);

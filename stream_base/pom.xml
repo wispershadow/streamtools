@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <artifactId>stream_parent</artifactId>
+        <groupId>io.wispershadow.stream</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>stream_base</artifactId>
+    <modules>
+        <module>stream_sdk</module>
+        <module>stream_functions</module>
+        <module>stream_services_core</module>
+        <module>stream_common</module>
+        <module>stream_transformation</module>
+        <module>stream_operators</module>
+        <module>stream_services_ext_ignite</module>
+    </modules>
+    <packaging>pom</packaging>
+	
+	<dependencyManagement>
+        <dependencies>
+			<dependency>
+                <groupId>io.wispershadow.stream</groupId>
+                <artifactId>stream_deps_logging</artifactId>
+                <version>${project.version}</version>
+				<type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.wispershadow.stream</groupId>
+                <artifactId>stream_deps_ignite</artifactId>
+                <version>${project.version}</version>
+				<type>pom</type>
+                <scope>import</scope>
+            </dependency>
+			<dependency>
+                <groupId>io.wispershadow.stream</groupId>
+                <artifactId>stream_deps_spring</artifactId>
+                <version>${project.version}</version>
+				<type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>1.7</version>
+            </dependency>
+		</dependencies>	
+    </dependencyManagement>
+</project>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:util="http://www.springframework.org/schema/util" 
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       classpath:org/springframework/beans/factory/xml/spring-beans.xsd
+       http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util.xsd">
+	<bean id="igniteCfgClient" class="org.apache.ignite.configuration.IgniteConfiguration">
+        <property name="gridName" value="igniteTestGrid"/>
+		
+		<property name="cacheConfiguration">
+            <list>
+                <bean class="org.apache.ignite.configuration.CacheConfiguration">
+					<property name="name" value="D_ACCOUNT_INFO"/>
+                    <property name="cacheMode" value="PARTITIONED"/>
+                    <property name="atomicityMode" value="TRANSACTIONAL"/>
+                    <property name="queryEntities">
+						<list>
+                            <bean class="org.apache.ignite.cache.QueryEntity">
+                                <property name="keyType" value="java.lang.String"/>
+                                <property name="valueType"
+                                          value="io.wispershadow.stream.AccountInfo"/>
+								<property name="keyFieldName" value="accountId"/>		  
+                                <property name="fields">
+                                    <map>
+                                        <entry key="accountId" value="java.lang.String"/>
+										<entry key="customerId" value="java.lang.String"/>
+										<entry key="accountType" value="int"/>
+										<entry key="balance" value="java.math.BigDecimal"/>
+										<entry key="creditLevel" value="int"/>
+                                    </map>
+                                </property>
+
+                                <property name="indexes">
+                                    <list>
+                                        <bean class="org.apache.ignite.cache.QueryIndex">
+                                            <constructor-arg value="customerId"/>
+                                        </bean>
+										
+										<bean class="org.apache.ignite.cache.QueryIndex">
+                                            <constructor-arg>
+												<list>
+													<value>accountType</value>
+													<value>creditLevel</value>
+												</list>
+											</constructor-arg>
+                                            <constructor-arg value="SORTED"/>
+                                        </bean>
+                                    </list>
+                                </property>
+                            </bean>
+                        </list>
+					</property>
+				</bean>
+			</list>
+		</property>	
+		
+		<property name="discoverySpi">
+            <bean class="org.apache.ignite.spi.discovery.tcp.TcpDiscoverySpi">
+				<property name="ipFinder">
+					<bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.vm.TcpDiscoveryVmIpFinder">
+                    <!-- bean class="org.apache.ignite.spi.discovery.tcp.ipfinder.multicast.TcpDiscoveryMulticastIpFinder" -->
+                        <property name="addresses">
+                            <list>
+                                <!-- In distributed environment, replace with actual host IP address. -->
+                                <value>127.0.0.1:30000..30010</value>
+                            </list>
+                        </property>
+                    </bean>
+				</property>
+			</bean>
+		</property>	
+	</bean>
+	
+</beans>	

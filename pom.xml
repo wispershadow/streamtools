@@ -8,15 +8,28 @@
     <artifactId>stream_parent</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>stream_sdk</module>
-        <module>stream_functions</module>
-        <module>stream_services_core</module>
-        <module>stream_common</module>
-        <module>stream_transformation</module>
-        <module>stream_operators</module>
-        <module>stream_testbase</module>
+        <module>stream_base</module>
+        <module>stream_deps_ignite</module>
+		<module>stream_deps_spring</module>
+		<module>stream_deps_logging</module>
+		<module>stream_testbase</module>
     </modules>
     <packaging>pom</packaging>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>utf-8</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
